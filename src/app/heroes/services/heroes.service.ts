@@ -28,4 +28,15 @@ export class HeroesService {
     return this.http.get<Heroe[]>(`${ this.baseUrl }/heroes?q=${ wordSearch }&_limit=6`);
   }
 
+  addHeroe( heroe: Heroe ): Observable<Heroe>{
+    return this.http.post<Heroe>(`${ this.baseUrl }/heroes`, heroe);
+  }
+  
+  updateHeroe( heroe: Heroe ): Observable<Heroe>{
+    return this.http.put<Heroe>(`${ this.baseUrl }/heroes/${heroe.id}`, heroe);
+  }
+  
+  deleteHeroe( idHeroe: String ): Observable<any>{
+    return this.http.delete<any>(`${ this.baseUrl }/heroes/${idHeroe}`);
+  }
 }
